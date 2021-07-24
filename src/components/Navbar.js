@@ -1,5 +1,5 @@
 import React from "react";
-import cartLogo from "../Photos/icons8-shopping-cart-30.png";
+import cartLogo from "../Photos/icons8-shopping-cart-40.png";
 import { Link } from "react-router-dom";
 
 function Navbar() {
