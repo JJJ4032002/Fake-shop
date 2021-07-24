@@ -1,13 +1,168 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("./Photos/brock-wegner-7yONARoUsbY-unsplash.jpg");
+  background-size: cover;
+  background-position-x: 80%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #f2f4f3;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6em 0.2em;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  color: #f2f4f3;
+}
+
+.NavItems {
+  padding: 0.5em 0.3em;
+}
+
+#NavHead {
+  font-size: 1.5rem;
+}
+
+#ShopBtn {
+  padding: 0.3em 0.6em;
+  font-size: 1rem;
+  border: 0.2em solid transparent;
+  background: transparent;
+  border-radius: 1em;
+  color: #f2f4f3;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#RightNav {
+  display: flex;
+  align-items: center;
+}
+
+.RightNavItem {
+  margin: 0 0.3em;
+  display: block;
+}
+
+.MainPageText {
+  padding-top: 6em;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 3rem;
+  color: rgb(146, 144, 144);
+}
+
+.MainPageHead {
+  width: 95%;
+  margin: 0 auto;
+
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+
+  border-radius: 0.4em;
+}
+
+.MainPageBtn {
+  padding: 0.4em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-radius: 0.4em;
+  color: rgba(0, 0, 0, 0.5);
+  border: 0.2em solid rgba(0, 0, 0, 0.5);
+
+  transition: color 150ms ease-in-out, border 150ms ease-in-out;
+  cursor: pointer;
+}
+
+.MainPageBtn:hover {
+  color: black;
+  border: 0.2em solid black;
+}
+@media (min-width: 600px) {
+  body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("./Photos/jernej-graj-qFYhUS2DGc4-unsplash.jpg");
+    background-position-x: 40%;
+    height: 100vh;
+  }
+  #NavHead {
+    font-size: 2.5rem;
+  }
+
+  nav {
+    justify-content: space-around;
+    padding: 0.6em;
+  }
+  .NavItems {
+    padding: 0.5em;
+  }
+  #RightNav {
+    width: 15%;
+    justify-content: space-between;
+  }
+  .MainPageText {
+    width: 100%;
+    padding-top: 4em;
+    margin: 0 2em 0 auto;
+    text-align: right;
+  }
+  .MainPageHead {
+    font-size: 4rem;
+    padding: 0.4em;
+    margin: 0 0 0 auto;
+    text-align: end;
+    width: 55%;
+    color: black;
+    word-wrap: break-word;
+  }
+  .MainPageBtn {
+    margin: 0 1.5em 0 auto;
+    padding: 0.4em;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 0.4em;
+    color: rgba(0, 0, 0, 0.5);
+    border: 0.2em solid rgba(0, 0, 0, 0.5);
+
+    transition: color 150ms ease-in-out, border 150ms ease-in-out;
+    cursor: pointer;
+  }
+  .MainPageBtn:hover {
+    color: black;
+    border: 0.2em solid black;
+  }
 }
