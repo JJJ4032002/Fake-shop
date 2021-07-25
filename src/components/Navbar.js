@@ -1,5 +1,5 @@
 import React from "react";
-import cartLogo from "../Photos/icons8-shopping-cart-40.png";
+import cartLogo from "../Photos/icons8-shopping-cart-30.png";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -11,9 +11,11 @@ function Navbar() {
         </h1>
       </Link>
       <div id="RightNav" className="NavItems">
-        <button className="RightNavItem" id="ShopBtn">
-          SHOP
-        </button>
+        <Link to="/shop">
+          <button className="RightNavItem" id="ShopBtn">
+            SHOP
+          </button>
+        </Link>
         <img className="RightNavItem" src={cartLogo} alt="cartLogo" />
       </div>
     </nav>

@@ -15,10 +15,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("./Photos/brock-wegner-7yONARoUsbY-unsplash.jpg");
+  background-image: url("./Photos/brock-wegner-7yONARoUsbY-unsplash.jpg");
   background-size: cover;
+
   background-position-x: 80%;
-  height: 100vh;
+  min-height: 100vh;
   background-repeat: no-repeat;
   position: relative;
   animation: opacityChange 300ms ease;
@@ -98,6 +99,7 @@ nav {
   text-align: center;
   font-size: 3rem;
   color: rgb(146, 144, 144);
+  animation: opacityChange 300ms ease;
 }
 
 .MainPageHead {
@@ -125,6 +127,52 @@ nav {
   cursor: pointer;
 }
 
+.ShopContainer {
+  padding-top: 6em;
+  animation: opacityChange 300ms ease;
+}
+.CategoryContainer {
+  margin: 2em auto 2em auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.5em;
+  width: 90%;
+}
+
+.CategoryItem {
+  width: 85%;
+  margin-top: 1em;
+  text-align: center;
+  position: relative;
+}
+
+.CategoryItem:nth-child(1) {
+  grid-column: 1 / span 4;
+}
+.CategoryItem:nth-child(2) {
+  grid-column: 5 / span 8;
+}
+.CategoryItem:nth-child(3) {
+  grid-column: 3 / span 4;
+  margin-bottom: 1em;
+}
+.CategoryPhoto {
+  width: 100%;
+  border-radius: 0.5em;
+  filter: brightness(50%);
+}
+.IndCategoryHead {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  color: #f2f4f3;
+  font-size: 1rem;
+}
+
 @keyframes opacityChange {
   0% {
     opacity: 0;
@@ -144,7 +192,6 @@ nav {
     background-repeat: no-repeat;
     background-image: url("./Photos/jernej-graj-qFYhUS2DGc4-unsplash.jpg");
     background-position-x: 40%;
-    height: 100vh;
   }
   #NavHead {
     font-size: 2.5rem;
@@ -204,5 +251,36 @@ nav {
   }
   #RightNav {
     align-items: center;
+  }
+  .CategoryItem {
+    width: 70%;
+    margin: 1.5em auto;
+  }
+  .CategoryPhoto {
+    filter: brightness(100%);
+    -webkit-transition: 400ms -webkit-filter ease;
+    transition: 400ms filter ease;
+    -moz-transition: 400ms -moz-filter ease;
+    -moz-transition: 400ms filter ease;
+    -ms-transition: 400ms -ms-filter ease;
+    -o-transition: 400ms -o-filter ease;
+    cursor: pointer;
+  }
+  .CategoryPhoto:hover {
+    filter: brightness(50%) blur(1.5px);
+  }
+
+  .CategoryItem:hover .IndCategoryHead {
+    opacity: 1;
+  }
+
+  .IndCategoryHead:hover ~ .CategoryPhoto {
+    filter: brightness(50%) blur(1.5px);
+  }
+
+  .IndCategoryHead {
+    opacity: 0;
+    transition: opacity 400ms ease;
+    font-size: 2rem;
   }
 }

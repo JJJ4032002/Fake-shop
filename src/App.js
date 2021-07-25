@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPageText from "./components/MainPageText";
+import Shop from "./components/Shop";
 function App() {
   return (
     <Router>
@@ -8,7 +9,8 @@ function App() {
         <Navbar />
 
         <Switch>
-          <Route path="/" component={MainPageText} />
+          <Route path="/" exact component={MainPageText} />
+          <Route path="/shop" component={Shop} />
         </Switch>
       </div>
     </Router>
