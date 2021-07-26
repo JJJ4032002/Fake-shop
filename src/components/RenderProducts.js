@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function RenderProducts({ products, Error, loader }) {
   console.log(products);
   return (
@@ -10,8 +10,10 @@ function RenderProducts({ products, Error, loader }) {
         {products.map((e) => {
           return (
             <div key={e.id} className="IndRender">
-              <img className="RenderImage" src={e.image} alt="Product" />
-              <p>{e.title}</p>
+              <Link to={`/Product/Individual/${e.id}`}>
+                <img className="RenderImage" src={e.image} alt="Product" />
+                <p className="RenderPara">{e.title}</p>
+              </Link>
             </div>
           );
         })}

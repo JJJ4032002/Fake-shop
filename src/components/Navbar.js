@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav>
-      <Link to="/">
+      <Link className="NavHead" to="/">
         <h1 id="NavHead" className="NavItems">
           FAKESHOP
         </h1>
