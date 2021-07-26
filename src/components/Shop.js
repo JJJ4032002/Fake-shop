@@ -8,21 +8,21 @@ function Shop() {
     <div className="ShopContainer">
       <div className="CategoryContainer">
         <div className="CategoryItem">
-          <Link className="CategoryLinks">
+          <Link to="/Product/women's clothing" className="CategoryLinks">
             <h1 className="IndCategoryHead">Women's</h1>
             <img className="CategoryPhoto" src={src1} alt="Women's" />
           </Link>
         </div>
 
         <div className="CategoryItem">
-          <Link className="CategoryLinks">
+          <Link to="/Product/men's clothing" className="CategoryLinks">
             <h1 className="IndCategoryHead">Men's</h1>
             <img className="CategoryPhoto" src={src2} alt="Men's" />
           </Link>
         </div>
 
         <div className="CategoryItem">
-          <Link to="/Product/" className="CategoryLinks">
+          <Link to="/Product/electronics" className="CategoryLinks">
             <h1 className="IndCategoryHead">Electronics</h1>
             <img className="CategoryPhoto" src={src3} alt="Electronics" />
           </Link>
