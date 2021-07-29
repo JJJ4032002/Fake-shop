@@ -45,7 +45,7 @@ function IndividualProduct({ click, title, price, photo, quantity, indId }) {
             onChange={(e) => {
               setNum(e.target.value);
             }}
-            min="0"
+            min="1"
           />
           <button className="CartBtn" onClick={click}>
             Add to Cart
