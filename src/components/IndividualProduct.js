@@ -9,7 +9,7 @@ function IndividualProduct({ click, title, price, photo, quantity, indId }) {
 
   const { items, loading, error } = useFetch(url, id);
   console.log(items);
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState(1);
 
   return (
     <div className="IndividualContainer">
