@@ -7,7 +7,12 @@ function useFetch(url, id) {
 
   const GetData = async function () {
     try {
-      const data = await fetch(url);
+      const data = await fetch(url, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
 
       const FinData = await data.json();
 

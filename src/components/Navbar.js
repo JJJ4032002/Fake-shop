@@ -16,7 +16,9 @@ function Navbar() {
             SHOP
           </button>
         </Link>
-        <img className="RightNavItem" src={cartLogo} alt="cartLogo" />
+        <Link to="/Cart">
+          <img className="RightNavItem" src={cartLogo} alt="cartLogo" />
+        </Link>
       </div>
     </nav>
   );
