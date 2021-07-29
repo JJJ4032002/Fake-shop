@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import MainPageText from "./components/MainPageText";
 import Shop from "./components/Shop";
 import Products from "./components/Products";
@@ -130,7 +130,7 @@ function App() {
     console.log(itemsArr);
   }, [itemsArr]);
   return (
-    <Router>
+    <HashRouter>
       <div className="App">
         <Navbar />
 
@@ -161,7 +161,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 
