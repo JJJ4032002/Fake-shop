@@ -79,7 +79,7 @@ function App() {
         }
         const index = itemsArr.findIndex(checkDataEdit);
 
-        if (num === 0) {
+        if (num < 1) {
           itemsArr.splice(index, 1);
           let newArr = [...itemsArr];
           setItemsArr(newArr);
