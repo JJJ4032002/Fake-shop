@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Cart({ arr, title, price, photo, quantity, indId, clickCart, sym }) {

@@ -76,8 +76,9 @@ nav {
   color: white;
 }
 
-#ShopBtn {
-  padding: 0.3em 0.6em;
+#ShopBtn,
+.SignIn {
+  padding: 0.3em 0.4em;
   font-size: 1rem;
   border: 0.2em solid transparent;
   background: transparent;
@@ -87,16 +88,18 @@ nav {
   cursor: pointer;
 }
 
-#ShopBtn::after {
+#ShopBtn::after,
+.SignIn::after {
   content: "";
   width: 0px;
-  height: 0.3px;
+  height: 0.9px;
   display: block;
   background-color: white;
   transition: 300ms;
 }
 
-#ShopBtn:hover::after {
+#ShopBtn:hover::after,
+.SignIn:hover::after {
   width: 100%;
 }
 
@@ -106,8 +109,9 @@ nav {
 }
 
 .RightNavItem {
-  margin: 0 0.3em;
+  margin: 0 0.2em;
   display: block;
+  padding: 0em 1em;
 }
 
 .MainPageText {
@@ -357,10 +361,10 @@ span {
     padding: 0.5em;
   }
   #RightNav {
-    width: 15%;
     justify-content: space-between;
   }
-  #ShopBtn {
+  #ShopBtn,
+  .SignIn {
     font-size: 1.2rem;
   }
   .MainPageText {
