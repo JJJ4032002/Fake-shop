@@ -1,8 +1,9 @@
 import React from "react";
 import cartLogo from "../Photos/icons8-shopping-cart-30.png";
 import { Link } from "react-router-dom";
+import SignInBtn from "./SignInBtn";
 
-function Navbar() {
+function Navbar(props) {
   return (
     <nav>
       <Link className="NavHead" to="/">
@@ -16,6 +17,7 @@ function Navbar() {
             SHOP
           </button>
         </Link>
+        <SignInBtn />
         <Link to="/Cart">
           <img className="RightNavItem" src={cartLogo} alt="cartLogo" />
         </Link>
