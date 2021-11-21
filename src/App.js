@@ -4,17 +4,16 @@ import MainPageText from "./components/MainPageText";
 import Shop from "./components/Shop";
 import Products from "./components/Products";
 import IndividualProduct from "./components/IndividualProduct";
-import { useEffect, useRef, useState, createContext } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import Cart from "./components/Cart";
 import { app } from "./components/FirebaseInitialization";
 import {
   GoogleAuthProvider,
   getAuth,
-  getRedirectResult,
-  signInWithRedirect,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
-
+const context = createContext("0");
 function App() {
   const refTitle = useRef(null);
   const refPrice = useRef(null);
@@ -28,15 +27,37 @@ function App() {
   const [check, setCheck] = useState(0);
   const [signIn, setSignIn] = useState(true);
   const [pending, setPending] = useState(true);
+
   // Creating the context
-  const context1 = createContext(null);
+
   //
   function SignInChange() {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     if (signIn) {
-      signInWithRedirect(auth, provider);
       setSignIn(false);
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+
+          setPending(false);
+          // ...
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          setSignIn(true);
+          // ...
+        });
     } else {
       signOut(auth)
         .then(() => {
@@ -46,61 +67,10 @@ function App() {
           // An error happened.
         });
       setSignIn(true);
+      setPending(true);
     }
   }
 
-  const provider = new GoogleAuthProvider();
-  const auth = getAuth();
-  getRedirectResult(auth)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access Google APIs.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-
-      // The signed-in user info.
-      const user = result.user;
-      console.log(user);
-      setPending(false);
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
-
-  // useEffect(() => {
-  //   console.log("It ran");
-  //   const provider = new GoogleAuthProvider();
-  //   const auth = getAuth();
-  //   getRedirectResult(auth)
-  //     .then((result) => {
-  //       // This gives you a Google Access Token. You can use it to access Google APIs.
-  //       const credential = GoogleAuthProvider.credentialFromResult(result);
-  //       const token = credential.accessToken;
-
-  //       // The signed-in user info.
-  //       const user = result.user;
-  //       console.log(user);
-  //       setSignIn(false);
-  //     })
-  //     .catch((error) => {
-  //       // Handle Errors here.
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       // The email of the user's account used.
-  //       const email = error.email;
-  //       // The AuthCredential type that was used.
-  //       const credential = GoogleAuthProvider.credentialFromError(error);
-  //       // ...
-  //     });
-  //   return () => {};
-  // }, []);
-  console.log(app);
   function ClickBtn(e) {
     setCheck(check + 1);
 
@@ -215,13 +185,12 @@ function App() {
   return (
     <HashRouter>
       <div className="App">
-        {/*provider*/}
-        <context1.Provider
-          value={{ value: signIn, value2: pending, value3: SignInChange }}
+        <context.Provider
+          value={{ SignIn: signIn, Pending: pending, SignInBtn: SignInChange }}
         >
           <Navbar />
-        </context1.Provider>
-        {/*provider*/}
+        </context.Provider>
+
         <Switch>
           <Route path="/" exact component={MainPageText} />
           <Route path="/shop" component={Shop} />
@@ -252,5 +221,5 @@ function App() {
     </HashRouter>
   );
 }
-
+export const MyContextConsumer = context.Consumer;
 export default App;

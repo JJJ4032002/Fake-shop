@@ -1,22 +1,23 @@
-import React, { useContext } from "react";
-
+import { MyContextConsumer } from "../App";
 function SignInBtn() {
   // using the context object here.
-  const contextFin = useContext(context1);
+
   return (
-    <div>
-      {signIn ? (
-        <button className="SignIn" onClick={signInBtn}>
-          SIGN IN
-        </button>
-      ) : pending ? (
-        <button className="SignIn">PENDING</button>
-      ) : (
-        <button className="SignIn" onClick={signInBtn}>
-          SIGN OUT
-        </button>
-      )}
-    </div>
+    <MyContextConsumer>
+      {({ SignIn, Pending, SignInBtn }) =>
+        SignIn ? (
+          <button className="SignIn" onClick={SignInBtn}>
+            SIGN IN
+          </button>
+        ) : Pending ? (
+          <button className="SignIn">PENDING</button>
+        ) : (
+          <button className="SignIn" onClick={SignInBtn}>
+            SIGN OUT
+          </button>
+        )
+      }
+    </MyContextConsumer>
   );
 }
 
