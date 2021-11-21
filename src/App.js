@@ -6,6 +6,7 @@ import Products from "./components/Products";
 import IndividualProduct from "./components/IndividualProduct";
 import { createContext, useEffect, useRef, useState } from "react";
 import Cart from "./components/Cart";
+
 import { app } from "./components/FirebaseInitialization";
 import {
   GoogleAuthProvider,
@@ -13,6 +14,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import AddToFirebase from "./components/AddToFirebase";
 const context = createContext("0");
 function App() {
   const refTitle = useRef(null);
@@ -136,6 +138,7 @@ function App() {
           itemsArr.splice(index, 1);
           let newArr = [...itemsArr];
           setItemsArr(newArr);
+          AddToFirebase(newArr);
           refCheckId.current = null;
           refSymbol.current = null;
         } else {
@@ -145,6 +148,7 @@ function App() {
           itemsArr.splice(index, 1, newObj);
           let newArr = [...itemsArr];
           setItemsArr(newArr);
+          AddToFirebase(newArr);
           refCheckId.current = null;
           refSymbol.current = null;
         }
@@ -158,6 +162,7 @@ function App() {
           console.log("Empty array");
           const newObj = { Title, Price, Photo, num, Id };
           setItemsArr([...itemsArr, newObj]);
+          AddToFirebase([...itemsArr, newObj]);
         } else {
           function checkDataEdit(ar) {
             if (Id === ar.Id) {
@@ -168,11 +173,13 @@ function App() {
           if (index === -1) {
             const newObj = { Title, Price, Photo, num, Id };
             setItemsArr([...itemsArr, newObj]);
+            AddToFirebase([...itemsArr, newObj]);
           } else {
             const newObj = { Title, Price, Photo, num, Id };
             itemsArr.splice(index, 1, newObj);
             let newArr = [...itemsArr];
             setItemsArr(newArr);
+            AddToFirebase(newArr);
           }
         }
       }
