@@ -73,6 +73,14 @@ function App() {
     }
   }
 
+  function CanAddToFirebase(items) {
+    if (signIn) {
+      console.log("Have not signed in yet");
+    } else {
+      AddToFirebase(items);
+    }
+  }
+
   function ClickBtn(e) {
     setCheck(check + 1);
 
@@ -138,7 +146,7 @@ function App() {
           itemsArr.splice(index, 1);
           let newArr = [...itemsArr];
           setItemsArr(newArr);
-          AddToFirebase(newArr);
+          CanAddToFirebase(newArr);
           refCheckId.current = null;
           refSymbol.current = null;
         } else {
@@ -148,7 +156,7 @@ function App() {
           itemsArr.splice(index, 1, newObj);
           let newArr = [...itemsArr];
           setItemsArr(newArr);
-          AddToFirebase(newArr);
+          CanAddToFirebase(newArr);
           refCheckId.current = null;
           refSymbol.current = null;
         }
@@ -162,7 +170,7 @@ function App() {
           console.log("Empty array");
           const newObj = { Title, Price, Photo, num, Id };
           setItemsArr([...itemsArr, newObj]);
-          AddToFirebase([...itemsArr, newObj]);
+          CanAddToFirebase([...itemsArr, newObj]);
         } else {
           function checkDataEdit(ar) {
             if (Id === ar.Id) {
@@ -173,13 +181,13 @@ function App() {
           if (index === -1) {
             const newObj = { Title, Price, Photo, num, Id };
             setItemsArr([...itemsArr, newObj]);
-            AddToFirebase([...itemsArr, newObj]);
+            CanAddToFirebase([...itemsArr, newObj]);
           } else {
             const newObj = { Title, Price, Photo, num, Id };
             itemsArr.splice(index, 1, newObj);
             let newArr = [...itemsArr];
             setItemsArr(newArr);
-            AddToFirebase(newArr);
+            CanAddToFirebase(newArr);
           }
         }
       }
