@@ -1,14 +1,17 @@
 import { collection, setDoc, doc, getFirestore } from "firebase/firestore";
 const db = getFirestore();
-
+let newCityRef = "";
 async function AddToFirebase(items) {
-  console.log(items);
   try {
     // Add a new document with a generated id
-    const newCityRef = doc(collection(db, "cities"));
+    if (newCityRef) {
+      await setDoc(newCityRef, { itemsArr: items });
+    } else {
+      newCityRef = doc(collection(db, "Products"));
 
-    // later...
-    await setDoc(newCityRef, { itemsArr: items });
+      // later...
+      await setDoc(newCityRef, { itemsArr: items });
+    }
   } catch (e) {
     console.error("Error adding document: ", e);
   }
