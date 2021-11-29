@@ -14,6 +14,14 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  getFirestore,
+} from "firebase/firestore";
+
 import AddToFirebase from "./components/AddToFirebase";
 const context = createContext("0");
 function App() {
@@ -29,9 +37,22 @@ function App() {
   const [check, setCheck] = useState(0);
   const [signIn, setSignIn] = useState(true);
   const [pending, setPending] = useState(true);
-
+  const [user, setUser] = useState("");
+  const db = getFirestore();
+  const [userId, setUserId] = useState("");
   // Creating the context
+  async function getItems(id) {
+    const docRef = query(collection(db, "Products"), where("userId", "==", id));
 
+    const docSnap = await getDocs(docRef);
+
+    docSnap.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      setUserId(doc.id);
+      console.log(doc);
+    });
+  }
   //
   function SignInChange() {
     const provider = new GoogleAuthProvider();
@@ -44,8 +65,9 @@ function App() {
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const token = credential.accessToken;
           // The signed-in user info.
-          const user = result.user;
 
+          setUser(result.user.uid);
+          getItems(result.user.uid);
           setPending(false);
           // ...
         })
@@ -77,7 +99,7 @@ function App() {
     if (signIn) {
       console.log("Have not signed in yet");
     } else {
-      AddToFirebase(items);
+      AddToFirebase(items, user, userId);
     }
   }
 
@@ -196,6 +218,7 @@ function App() {
 
   useEffect(() => {
     console.log(itemsArr);
+    console.log(user);
   }, [itemsArr]);
   return (
     <HashRouter>
