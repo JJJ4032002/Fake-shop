@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Fake-shop/static/css/main.db24df1c.chunk.css",
-    "main.js": "/Fake-shop/static/js/main.84ceb585.chunk.js",
-    "main.js.map": "/Fake-shop/static/js/main.84ceb585.chunk.js.map",
+    "main.js": "/Fake-shop/static/js/main.9d32e29f.chunk.js",
+    "main.js.map": "/Fake-shop/static/js/main.9d32e29f.chunk.js.map",
     "runtime-main.js": "/Fake-shop/static/js/runtime-main.29979dc9.js",
     "runtime-main.js.map": "/Fake-shop/static/js/runtime-main.29979dc9.js.map",
-    "static/js/2.95ed3986.chunk.js": "/Fake-shop/static/js/2.95ed3986.chunk.js",
-    "static/js/2.95ed3986.chunk.js.map": "/Fake-shop/static/js/2.95ed3986.chunk.js.map",
+    "static/js/2.3190ae02.chunk.js": "/Fake-shop/static/js/2.3190ae02.chunk.js",
+    "static/js/2.3190ae02.chunk.js.map": "/Fake-shop/static/js/2.3190ae02.chunk.js.map",
     "index.html": "/Fake-shop/index.html",
     "static/css/main.db24df1c.chunk.css.map": "/Fake-shop/static/css/main.db24df1c.chunk.css.map",
-    "static/js/2.95ed3986.chunk.js.LICENSE.txt": "/Fake-shop/static/js/2.95ed3986.chunk.js.LICENSE.txt",
+    "static/js/2.3190ae02.chunk.js.LICENSE.txt": "/Fake-shop/static/js/2.3190ae02.chunk.js.LICENSE.txt",
     "static/media/index.css": "/Fake-shop/static/media/jernej-graj-qFYhUS2DGc4-unsplash.f444d555.jpg",
     "static/media/danijel-skabic-16nBtbn-ZRA-unsplash.57f58d3a.jpg": "/Fake-shop/static/media/danijel-skabic-16nBtbn-ZRA-unsplash.57f58d3a.jpg",
     "static/media/dugba-cauley-hushie-6MNmDi1hc_Y-unsplash.8f6e9192.jpg": "/Fake-shop/static/media/dugba-cauley-hushie-6MNmDi1hc_Y-unsplash.8f6e9192.jpg",
@@ -17,8 +17,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.29979dc9.js",
-    "static/js/2.95ed3986.chunk.js",
+    "static/js/2.3190ae02.chunk.js",
     "static/css/main.db24df1c.chunk.css",
-    "static/js/main.84ceb585.chunk.js"
+    "static/js/main.9d32e29f.chunk.js"
   ]
 }
