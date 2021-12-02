@@ -6,6 +6,7 @@ import Products from "./components/Products";
 import IndividualProduct from "./components/IndividualProduct";
 import { createContext, useEffect, useRef, useState } from "react";
 import Cart from "./components/Cart";
+
 import { app } from "./components/FirebaseInitialization";
 import {
   GoogleAuthProvider,
@@ -13,6 +14,15 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  getFirestore,
+} from "firebase/firestore";
+
+import AddToFirebase from "./components/AddToFirebase";
 const context = createContext("0");
 function App() {
   const refTitle = useRef(null);
@@ -27,9 +37,24 @@ function App() {
   const [check, setCheck] = useState(0);
   const [signIn, setSignIn] = useState(true);
   const [pending, setPending] = useState(true);
-
+  const [user, setUser] = useState("");
+  const db = getFirestore();
+  const [userId, setUserId] = useState("");
   // Creating the context
+  async function getItems(id) {
+    const docRef = query(collection(db, "Products"), where("userId", "==", id));
 
+    const docSnap = await getDocs(docRef);
+
+    docSnap.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      setUserId(doc.id);
+      setItemsArr(doc.data().itemsArr);
+
+      console.log(doc);
+    });
+  }
   //
   function SignInChange() {
     const provider = new GoogleAuthProvider();
@@ -42,8 +67,9 @@ function App() {
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const token = credential.accessToken;
           // The signed-in user info.
-          const user = result.user;
 
+          setUser(result.user.uid);
+          getItems(result.user.uid);
           setPending(false);
           // ...
         })
@@ -62,12 +88,21 @@ function App() {
       signOut(auth)
         .then(() => {
           // Sign-out successful.
+          setSignIn(true);
+          setPending(true);
+          setItemsArr([]);
         })
         .catch((error) => {
           // An error happened.
         });
-      setSignIn(true);
-      setPending(true);
+    }
+  }
+
+  function CanAddToFirebase(items) {
+    if (signIn) {
+      console.log("Have not signed in yet");
+    } else {
+      AddToFirebase(items, user, userId);
     }
   }
 
@@ -99,6 +134,7 @@ function App() {
   }
 
   function ClickCartBtn(e) {
+    setCheck(check + 1);
     let symbol = e.target.textContent;
     let Quantity = "";
 
@@ -133,18 +169,21 @@ function App() {
         const index = itemsArr.findIndex(checkDataEdit);
 
         if (num < 1) {
-          itemsArr.splice(index, 1);
           let newArr = [...itemsArr];
+          newArr.splice(index, 1);
           setItemsArr(newArr);
+          CanAddToFirebase(newArr);
           refCheckId.current = null;
           refSymbol.current = null;
         } else {
           let Obj = itemsArr[index];
           let newObj = JSON.parse(JSON.stringify(Obj));
           newObj.num = num;
-          itemsArr.splice(index, 1, newObj);
+
           let newArr = [...itemsArr];
+          newArr.splice(index, 1, newObj);
           setItemsArr(newArr);
+          CanAddToFirebase(newArr);
           refCheckId.current = null;
           refSymbol.current = null;
         }
@@ -158,6 +197,7 @@ function App() {
           console.log("Empty array");
           const newObj = { Title, Price, Photo, num, Id };
           setItemsArr([...itemsArr, newObj]);
+          CanAddToFirebase([...itemsArr, newObj]);
         } else {
           function checkDataEdit(ar) {
             if (Id === ar.Id) {
@@ -168,11 +208,13 @@ function App() {
           if (index === -1) {
             const newObj = { Title, Price, Photo, num, Id };
             setItemsArr([...itemsArr, newObj]);
+            CanAddToFirebase([...itemsArr, newObj]);
           } else {
             const newObj = { Title, Price, Photo, num, Id };
             itemsArr.splice(index, 1, newObj);
             let newArr = [...itemsArr];
             setItemsArr(newArr);
+            CanAddToFirebase(newArr);
           }
         }
       }
@@ -181,6 +223,7 @@ function App() {
 
   useEffect(() => {
     console.log(itemsArr);
+    console.log(user);
   }, [itemsArr]);
   return (
     <HashRouter>

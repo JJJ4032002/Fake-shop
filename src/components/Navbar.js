@@ -3,7 +3,7 @@ import cartLogo from "../Photos/icons8-shopping-cart-30.png";
 import { Link } from "react-router-dom";
 import SignInBtn from "./SignInBtn";
 
-function Navbar(props) {
+function Navbar() {
   return (
     <nav>
       <Link className="NavHead" to="/">
