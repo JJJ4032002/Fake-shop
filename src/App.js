@@ -51,9 +51,6 @@ function App() {
       console.log(doc.id, " => ", doc.data());
       setUserId(doc.id);
       setItemsArr(doc.data().itemsArr);
-      if (check < 1) {
-        setCheck(check + 1);
-      }
 
       console.log(doc);
     });
@@ -91,12 +88,13 @@ function App() {
       signOut(auth)
         .then(() => {
           // Sign-out successful.
+          setSignIn(true);
+          setPending(true);
+          setItemsArr([]);
         })
         .catch((error) => {
           // An error happened.
         });
-      setSignIn(true);
-      setPending(true);
     }
   }
 
@@ -109,9 +107,7 @@ function App() {
   }
 
   function ClickBtn(e) {
-    if (check === 1) {
-      setCheck(check + 1);
-    }
+    setCheck(check + 1);
 
     let Quantity = refQuantity.current.value;
     Quantity = Number(Quantity);
@@ -163,8 +159,6 @@ function App() {
   useEffect(() => {
     if (check === 0) {
       console.log("UseEffect ran first time");
-    } else if (check === 1 && !signIn) {
-      console.log("Ran for first time after sign in");
     } else {
       if (refSymbol.current === "+" || refSymbol.current === "-") {
         function checkDataEdit(ar) {
