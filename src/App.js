@@ -50,6 +50,11 @@ function App() {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       setUserId(doc.id);
+      setItemsArr(doc.data().itemsArr);
+      if (check < 1) {
+        setCheck(check + 1);
+      }
+
       console.log(doc);
     });
   }
@@ -104,7 +109,9 @@ function App() {
   }
 
   function ClickBtn(e) {
-    setCheck(check + 1);
+    if (check === 1) {
+      setCheck(check + 1);
+    }
 
     let Quantity = refQuantity.current.value;
     Quantity = Number(Quantity);
@@ -131,6 +138,7 @@ function App() {
   }
 
   function ClickCartBtn(e) {
+    setCheck(check + 1);
     let symbol = e.target.textContent;
     let Quantity = "";
 
@@ -155,6 +163,8 @@ function App() {
   useEffect(() => {
     if (check === 0) {
       console.log("UseEffect ran first time");
+    } else if (check === 1 && !signIn) {
+      console.log("Ran for first time after sign in");
     } else {
       if (refSymbol.current === "+" || refSymbol.current === "-") {
         function checkDataEdit(ar) {
@@ -165,8 +175,8 @@ function App() {
         const index = itemsArr.findIndex(checkDataEdit);
 
         if (num < 1) {
-          itemsArr.splice(index, 1);
           let newArr = [...itemsArr];
+          newArr.splice(index, 1);
           setItemsArr(newArr);
           CanAddToFirebase(newArr);
           refCheckId.current = null;
@@ -175,8 +185,9 @@ function App() {
           let Obj = itemsArr[index];
           let newObj = JSON.parse(JSON.stringify(Obj));
           newObj.num = num;
-          itemsArr.splice(index, 1, newObj);
+
           let newArr = [...itemsArr];
+          newArr.splice(index, 1, newObj);
           setItemsArr(newArr);
           CanAddToFirebase(newArr);
           refCheckId.current = null;
