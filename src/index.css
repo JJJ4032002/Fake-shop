@@ -217,11 +217,13 @@ nav {
   background: white;
   padding: 12px;
   border-radius: 0.5em;
+  height: 400px;
+  width: 100%;
 }
 
 .RenderImage {
   width: 100%;
-  height: 200px;
+  height: 85%;
   object-fit: scale-down;
 }
 
@@ -342,6 +344,30 @@ span {
   margin: 0.2em 0;
 }
 
+.NonVisible {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  right: 5%;
+  top: 30%;
+  transform: translateY(-250%);
+  background: white;
+  height: 150px;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.3em solid black;
+  border-radius: 1em;
+  opacity: 0;
+  transition: transform 350ms cubic-bezier(0.18, 0.89, 0.63, 1.12),
+    opacity 550ms ease-in-out 30ms;
+}
+.NonVisible.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 @media (min-width: 600px) {
   body {
     background-size: cover;
@@ -444,7 +470,7 @@ span {
     grid-template-columns: repeat(3, 1fr);
   }
   .RenderImage {
-    height: 400px;
+    height: 85%;
   }
   .IndRender {
     padding: 8px;
@@ -505,5 +531,10 @@ span {
   .CartHead {
     color: black;
     background-color: transparent;
+  }
+  .NonVisible {
+    width: 50%;
+    left: 25%;
+    right: 25%;
   }
 }
