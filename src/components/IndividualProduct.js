@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
-function IndividualProduct({ click, title, price, photo, quantity, indId }) {
+function IndividualProduct({
+  click,
+  title,
+  price,
+  photo,
+  quantity,
+  indId,
+  popup,
+}) {
   let match = useRouteMatch();
   let id = match.params.id;
   let url = `https://fakestoreapi.com/products/${id}`;
@@ -15,7 +23,10 @@ function IndividualProduct({ click, title, price, photo, quantity, indId }) {
     <div className="IndividualContainer">
       {loading && <h1>Loading...</h1>}
       {error && <h1>Error...</h1>}
-
+      <div className={popup}>
+        The item has been added to the cart. Click on the Cart Button to view
+        your items.
+      </div>
       <div
         ref={indId}
         id={items.id}
