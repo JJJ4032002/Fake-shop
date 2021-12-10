@@ -40,6 +40,7 @@ function App() {
   const [user, setUser] = useState("");
   const db = getFirestore();
   const [userId, setUserId] = useState("");
+  const [popUp, setPopUp] = useState(`NonVisible`);
   // Creating the context
   async function getItems(id) {
     const docRef = query(collection(db, "Products"), where("userId", "==", id));
@@ -107,6 +108,10 @@ function App() {
   }
 
   function ClickBtn(e) {
+    setPopUp(`NonVisible visible`);
+    setTimeout(() => {
+      setPopUp(`NonVisible`);
+    }, 1800);
     setCheck(check + 1);
 
     let Quantity = refQuantity.current.value;
@@ -246,6 +251,7 @@ function App() {
               photo={refPhoto}
               quantity={refQuantity}
               indId={refId}
+              popup={popUp}
             />
           </Route>
           <Route exact path="/Cart">
