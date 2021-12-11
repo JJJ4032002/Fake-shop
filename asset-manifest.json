@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Fake-shop/static/css/main.2d86b932.chunk.css",
-    "main.js": "/Fake-shop/static/js/main.1bcdd7e3.chunk.js",
-    "main.js.map": "/Fake-shop/static/js/main.1bcdd7e3.chunk.js.map",
+    "main.css": "/Fake-shop/static/css/main.5c4f5f73.chunk.css",
+    "main.js": "/Fake-shop/static/js/main.92fedb72.chunk.js",
+    "main.js.map": "/Fake-shop/static/js/main.92fedb72.chunk.js.map",
     "runtime-main.js": "/Fake-shop/static/js/runtime-main.29979dc9.js",
     "runtime-main.js.map": "/Fake-shop/static/js/runtime-main.29979dc9.js.map",
     "static/js/2.3190ae02.chunk.js": "/Fake-shop/static/js/2.3190ae02.chunk.js",
     "static/js/2.3190ae02.chunk.js.map": "/Fake-shop/static/js/2.3190ae02.chunk.js.map",
     "index.html": "/Fake-shop/index.html",
-    "static/css/main.2d86b932.chunk.css.map": "/Fake-shop/static/css/main.2d86b932.chunk.css.map",
+    "static/css/main.5c4f5f73.chunk.css.map": "/Fake-shop/static/css/main.5c4f5f73.chunk.css.map",
     "static/js/2.3190ae02.chunk.js.LICENSE.txt": "/Fake-shop/static/js/2.3190ae02.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/Fake-shop/static/media/jernej-graj-qFYhUS2DGc4-unsplash.f444d555.jpg",
-    "static/media/danijel-skabic-16nBtbn-ZRA-unsplash.57f58d3a.jpg": "/Fake-shop/static/media/danijel-skabic-16nBtbn-ZRA-unsplash.57f58d3a.jpg",
-    "static/media/dugba-cauley-hushie-6MNmDi1hc_Y-unsplash.8f6e9192.jpg": "/Fake-shop/static/media/dugba-cauley-hushie-6MNmDi1hc_Y-unsplash.8f6e9192.jpg",
-    "static/media/taylor-Xqb7GmV_VoQ-unsplash.d02e320a.jpg": "/Fake-shop/static/media/taylor-Xqb7GmV_VoQ-unsplash.d02e320a.jpg"
+    "static/media/index.css": "/Fake-shop/static/media/jernej-graj-qFYhUS2DGc4-unsplash.762706ab.jpg",
+    "static/media/danijel-skabic-16nBtbn-ZRA-unsplash.558666d3.jpg": "/Fake-shop/static/media/danijel-skabic-16nBtbn-ZRA-unsplash.558666d3.jpg",
+    "static/media/dugba-cauley-hushie-6MNmDi1hc_Y-unsplash.94da69cb.jpg": "/Fake-shop/static/media/dugba-cauley-hushie-6MNmDi1hc_Y-unsplash.94da69cb.jpg",
+    "static/media/taylor-Xqb7GmV_VoQ-unsplash.f9e8aa04.jpg": "/Fake-shop/static/media/taylor-Xqb7GmV_VoQ-unsplash.f9e8aa04.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.29979dc9.js",
     "static/js/2.3190ae02.chunk.js",
-    "static/css/main.2d86b932.chunk.css",
-    "static/js/main.1bcdd7e3.chunk.js"
+    "static/css/main.5c4f5f73.chunk.css",
+    "static/js/main.92fedb72.chunk.js"
   ]
 }
