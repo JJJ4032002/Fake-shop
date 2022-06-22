@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Live 
+
+[Click Here](https://jjj4032002.github.io/Fake-shop/#/)
+
 ## Available Scripts
 
 In the project directory, you can run:
